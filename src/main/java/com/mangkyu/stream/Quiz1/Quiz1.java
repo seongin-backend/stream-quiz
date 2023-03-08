@@ -34,24 +34,10 @@ public class Quiz1 {
 
         List<String[]> csvLines = readCsvLines();
 
-        HashMap<String, Integer> stringIntegerHashMap = new HashMap<>();
-
-        Stream<String[]> stream = csvLines.stream();
-/*
-        stream.forEach(
-            strings -> Arrays.stream(strings).map(string -> string[1]).collect(Collectors.toList())
-        );
-*/
-        String[] strings = {"이름", "취미:셋", "소개"};
-
-        List<String[]> collect = Arrays.stream(strings).map(s -> s.split(":")).collect(Collectors.toList());
-        System.out.println(collect);
-
-        List<String> collect1 = Arrays.stream(strings).flatMap(s -> Arrays.stream(s.split(":"))).collect(Collectors.toList());
-        System.out.println(collect1);
-
-
-        return stringIntegerHashMap;
+        return csvLines.stream()
+                .map(users -> users[1].trim())
+                .flatMap(strings1 -> Arrays.stream(strings1.split(":")))
+                .collect(Collectors.toMap(string -> string, string -> 1, (oldValue, newValue) -> newValue += oldValue));
     }
 
     // 1.2 각 취미를 선호하는 정씨 성을 갖는 인원이 몇 명인지 계산하여라.
