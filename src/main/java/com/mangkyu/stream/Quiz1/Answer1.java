@@ -24,7 +24,7 @@ public class Answer1 {
                 .collect(Collectors.toMap(hobby -> hobby, hobby -> 1, (oldValue, newValue) -> newValue += oldValue));
     }
 
-    // 1.2 각 취미를 선호하는 정씨 성을 갖는 인원이 몇 명인지 계산하여라.
+    // 1.2 각 취미를 선호하는 정씨 성을 갖는 인원이 몇 명인지 계산하여라. test
     public Map<String, Integer> quiz2() throws IOException {
         List<String[]> csvLines = readCsvLines();
 

@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Quiz1 {
 
@@ -57,6 +56,14 @@ public class Quiz1 {
     // 1.3 소개 내용에 '좋아'가 몇번 등장하는지 계산하여라.
     public int quiz3() throws IOException {
         List<String[]> csvLines = readCsvLines();
+        csvLines.stream().map(line -> fncountContain(line[2]))
+                .reduce(0, Integer::sum);
+        return 0;
+    }
+
+    private int fncountContain(String string) {
+        int index = string.indexOf("좋아", 0);
+
         return 0;
     }
 
